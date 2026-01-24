@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todd Varland - Personal Blog</title>
+    <meta name="description" content="Personal blog featuring thoughts on technology, development, and life">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📝</text></svg>">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav__container">
+            <div class="nav__brand">
+                <a href="#home" class="nav__logo">Todd Varland</a>
+            </div>
+            
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="#home" class="nav__link active">Home</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#about" class="nav__link">About</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#blog" class="nav__link">Blog</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#contact" class="nav__link">Contact</a>
+                    </li>
+                </ul>
+                
+                <div class="nav__close" id="nav-close">
+                    <i class="icon-close">&times;</i>
+                </div>
+            </div>
+            
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="icon-menu">☰</i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero__container">
+            <div class="hero__content">
+                <h1 class="hero__title">
+                    Hello, I'm <span class="hero__highlight">Todd</span>
+                </h1>
+                <p class="hero__subtitle">
+                    A passionate developer sharing insights about technology, coding, and creative problem-solving.
+                </p>
+                <div class="hero__actions">
+                    <a href="#blog" class="btn btn--primary">Read My Blog</a>
+                    <a href="#about" class="btn btn--secondary">About Me</a>
+                </div>
+            </div>
+            <div class="hero__image">
+                <div class="hero__blob">
+                    <svg viewBox="0 0 200 187" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <mask id="mask0" mask-type="alpha">
+                            <path d="m60.1-2.5c17.3-8.2 39.1-6.6 54.9 4.4s26.5 28.1 29.4 46.6c2.9 18.5-1.3 37.3-11.9 52.4s-26.8 26.1-43.2 31.9c-16.4 5.8-34.2 5.3-49.7-1.2s-28.2-18.8-34.3-33.7c-6.1-14.9-4.4-31.1 4.4-44.9s23.5-25.1 40.8-33.3z"/>
+                        </mask>
+                        <g mask="url(#mask0)">
+                            <path d="m60.1-2.5c17.3-8.2 39.1-6.6 54.9 4.4s26.5 28.1 29.4 46.6c2.9 18.5-1.3 37.3-11.9 52.4s-26.8 26.1-43.2 31.9c-16.4 5.8-34.2 5.3-49.7-1.2s-28.2-18.8-34.3-33.7c-6.1-14.9-4.4-31.1 4.4-44.9s23.5-25.1 40.8-33.3z"/>
+                            <image class="hero__profile" x="12" y="18" href="https://via.placeholder.com/150x150/667eea/ffffff?text=TD"/>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title">About Me</h2>
+                <p class="section__subtitle">Get to know more about who I am and what I do</p>
+            </div>
+            
+            <div class="about__content">
+                <div class="about__text">
+                    <p class="about__description">
+                        I'm a passionate developer with a love for creating beautiful, functional web experiences. 
+                        I enjoy exploring new technologies, sharing knowledge, and connecting with the developer community.
+                    </p>
+                    <div class="about__info">
+                        <div class="about__box">
+                            <h3 class="about__title">Experience</h3>
+                            <span class="about__subtitle">5+ Years Working</span>
+                        </div>
+                        <div class="about__box">
+                            <h3 class="about__title">Completed</h3>
+                            <span class="about__subtitle">50+ Projects</span>
+                        </div>
+                        <div class="about__box">
+                            <h3 class="about__title">Support</h3>
+                            <span class="about__subtitle">Online 24/7</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog" id="blog">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title">Latest Posts</h2>
+                <p class="section__subtitle">Recent thoughts and insights from my blog</p>
+            </div>
+            
+            <div class="blog__container" id="blog-posts">
+                <!-- Blog posts will be loaded here by JavaScript -->
+            </div>
+            
+            <div class="blog__actions">
+                <a href="blog.html" class="btn btn--primary">View All Posts</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title">Get In Touch</h2>
+                <p class="section__subtitle">Feel free to reach out for collaborations or just to say hello</p>
+            </div>
+            
+            <div class="contact__content">
+                <div class="contact__info">
+                    <div class="contact__card">
+                        <i class="contact__icon">📧</i>
+                        <h3 class="contact__title">Email</h3>
+                        <p class="contact__data">todd@example.com</p>
+                    </div>
+                    
+                    <div class="contact__card">
+                        <i class="contact__icon">💼</i>
+                        <h3 class="contact__title">LinkedIn</h3>
+                        <p class="contact__data">linkedin.com/in/toddvarland</p>
+                    </div>
+                    
+                    <div class="contact__card">
+                        <i class="contact__icon">🐙</i>
+                        <h3 class="contact__title">GitHub</h3>
+                        <p class="contact__data">github.com/toddvarland</p>
+                    </div>
+                </div>
+                
+                <form class="contact__form" id="contact-form">
+                    <div class="contact__form-div">
+                        <label class="contact__form-tag">Name</label>
+                        <input type="text" name="name" placeholder="Insert your name" class="contact__form-input" required>
+                    </div>
+                    
+                    <div class="contact__form-div">
+                        <label class="contact__form-tag">Email</label>
+                        <input type="email" name="email" placeholder="Insert your email" class="contact__form-input" required>
+                    </div>
+                    
+                    <div class="contact__form-div contact__form-area">
+                        <label class="contact__form-tag">Message</label>
+                        <textarea name="message" cols="30" rows="10" placeholder="Write your message" class="contact__form-input" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn--primary">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__info">
+                    <h3 class="footer__title">Todd Varland</h3>
+                    <p class="footer__description">
+                        Passionate developer sharing insights about technology and development.
+                    </p>
+                </div>
+                
+                <div class="footer__social">
+                    <a href="#" class="footer__social-link" target="_blank">GitHub</a>
+                    <a href="#" class="footer__social-link" target="_blank">LinkedIn</a>
+                    <a href="#" class="footer__social-link" target="_blank">Twitter</a>
+                </div>
+            </div>
+            
+            <div class="footer__copy">
+                <p>&copy; 2025 Todd Varland. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll Up Button -->
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="scrollup__icon">↑</i>
+    </a>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

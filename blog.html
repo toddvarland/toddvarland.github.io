@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Todd Varland</title>
+    <meta name="description" content="All blog posts about technology, development, and creative problem-solving">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📝</text></svg>">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav__container">
+            <div class="nav__brand">
+                <a href="index.html" class="nav__logo">Todd Varland</a>
+            </div>
+            
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="index.html#home" class="nav__link">Home</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="index.html#about" class="nav__link">About</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="blog.html" class="nav__link active">Blog</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="index.html#contact" class="nav__link">Contact</a>
+                    </li>
+                </ul>
+                
+                <div class="nav__close" id="nav-close">
+                    <i class="icon-close">&times;</i>
+                </div>
+            </div>
+            
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="icon-menu">☰</i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Blog Header -->
+        <section class="blog-header">
+            <div class="container">
+                <div class="blog-header__content">
+                    <h1 class="blog-header__title">All Blog Posts</h1>
+                    <p class="blog-header__subtitle">
+                        Insights about technology, development, and creative problem-solving
+                    </p>
+                    
+                    <!-- Search Bar -->
+                    <div class="search-container">
+                        <input 
+                            type="text" 
+                            id="search-input" 
+                            class="search-input" 
+                            placeholder="Search posts..."
+                        >
+                        <div id="search-results" class="search-results"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Posts Grid -->
+        <section class="blog-grid">
+            <div class="container">
+                <div class="blog__container" id="all-blog-posts">
+                    <!-- Blog posts will be loaded here by JavaScript -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__info">
+                    <h3 class="footer__title">Todd Varland</h3>
+                    <p class="footer__description">
+                        Passionate developer sharing insights about technology and development.
+                    </p>
+                </div>
+                
+                <div class="footer__social">
+                    <a href="#" class="footer__social-link" target="_blank">GitHub</a>
+                    <a href="#" class="footer__social-link" target="_blank">LinkedIn</a>
+                    <a href="#" class="footer__social-link" target="_blank">Twitter</a>
+                </div>
+            </div>
+            
+            <div class="footer__copy">
+                <p>&copy; 2025 Todd Varland. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll Up Button -->
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="scrollup__icon">↑</i>
+    </a>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+    <script>
+        // Load all blog posts when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAllBlogPosts();
+            initSearch();
+        });
+
+        function loadAllBlogPosts() {
+            const blogContainer = document.getElementById('all-blog-posts');
+            if (!blogContainer || !window.blogPosts) return;
+
+            // Clear existing content
+            blogContainer.innerHTML = '';
+
+            // Load all posts
+            window.blogPosts.forEach(post => {
+                const postElement = document.createElement('div');
+                postElement.className = 'blog__card fade-in-up';
+                
+                postElement.innerHTML = `
+                    <div class="blog__img" style="background-image: url(${post.image}); background-size: cover; background-position: center;"></div>
+                    <h3 class="blog__title">
+                        <a href="post.html?slug=${post.slug}">${post.title}</a>
+                    </h3>
+                    <p class="blog__description">${post.description}</p>
+                    <div class="blog__footer">
+                        <span class="blog__date">${window.formatDate(post.date)}</span>
+                        <a href="post.html?slug=${post.slug}" class="blog__read-more">Read More →</a>
+                    </div>
+                `;
+                
+                blogContainer.appendChild(postElement);
+            });
+
+            // Add animation observer
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            document.querySelectorAll('.blog__card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        }
+    </script>
+    
+    <style>
+        /* Blog-specific styles */
+        .blog-header {
+            background: linear-gradient(135deg, var(--body-color) 0%, var(--first-color-lighter) 100%);
+            padding: calc(var(--header-height) + 2rem) 0 3rem;
+            text-align: center;
+        }
+
+        .blog-header__title {
+            font-size: var(--big-font-size);
+            color: var(--title-color);
+            margin-bottom: var(--mb-0-5);
+        }
+
+        .blog-header__subtitle {
+            font-size: var(--h3-font-size);
+            color: var(--text-color);
+            margin-bottom: var(--mb-2);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .search-container {
+            max-width: 400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--text-color-light);
+            border-radius: 0.5rem;
+            font-size: var(--normal-font-size);
+            background-color: var(--container-color);
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--first-color);
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: var(--container-color);
+            border: 1px solid var(--text-color-light);
+            border-radius: 0.5rem;
+            margin-top: 0.5rem;
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: var(--z-tooltip);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-result {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .search-result:last-child {
+            border-bottom: none;
+        }
+
+        .search-result h3 {
+            font-size: var(--h3-font-size);
+            margin-bottom: 0.25rem;
+        }
+
+        .search-result h3 a {
+            color: var(--title-color);
+            transition: var(--transition);
+        }
+
+        .search-result h3 a:hover {
+            color: var(--first-color);
+        }
+
+        .search-result p {
+            color: var(--text-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .search-result small {
+            color: var(--text-color-light);
+            font-size: var(--small-font-size);
+        }
+
+        .blog-grid {
+            padding: 4rem 0;
+        }
+
+        @media screen and (max-width: 768px) {
+            .blog-header {
+                padding: calc(var(--header-height) + 1rem) 0 2rem;
+            }
+
+            .search-container {
+                margin-top: var(--mb-1);
+            }
+        }
+    </style>
+</body>
+</html>
